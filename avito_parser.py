@@ -1,3 +1,5 @@
+import keyword
+
 from selenium import webdriver
 from settings import *
 import time
@@ -16,20 +18,41 @@ options.headless=True
 
 driver = webdriver.Chrome(chromedriver, options=options)
 driver.set_window_size(1920, 1080)
-n=1
-url = f'https://www.avito.ru/krasnodar?f=ASgCAgECAUXGmgwUeyJmcm9tIjoyMDAwLCJ0byI6MH0&p={n}&q=xiaomi+mi+%D0%BD%D0%BE%D1%83%D1%82%D0%B1%D1%83%D0%BA'
-driver.implicitly_wait(10)
 
-try:
-    driver.get(url=url)
-    pages_count = int(driver.find_elements(By.CLASS_NAME, 'pagination-item-JJq_j')[-2].text)
-    this_page = int(driver.find_element(By.CLASS_NAME, 'pagination-item_active-NcJX6').text)
-    next_page_button = driver.find_elements(By.CLASS_NAME, 'pagination-item_arrow-Sttbt')[1]
-    file = open('test.txt', 'w')
-    print(f'По результатам поиска найдено страниц: {pages_count}')
-    while n <= pages_count:
+
+def get_search_results():
+    url = 'https://www.avito.ru/'
+
+    try:
+        driver.get(url=url)
+        time.sleep(3)
+        object = input("Что вы ищите?\n:")
+        driver.find_element(By.CLASS_NAME, 'input-input-Zpzc1').send_keys(object)
+        driver.find_element(By.CLASS_NAME, 'form-part-buttonElement-dM6LN').click()
+        time.sleep(2)
+        return str(driver.current_url)
+
+    except Exception as ex:
+        print(ex)
+    finally:
+        print('Поиск завершен')
+
+def parse_results(url):
+    n=1
+    # url = url
+    driver.implicitly_wait(10)
+
+    try:
+        # driver.get(url=url)
+        pages_count = int(driver.find_elements(By.CLASS_NAME, 'pagination-item-JJq_j')[-2].text)
+        this_page = int(driver.find_element(By.CLASS_NAME, 'pagination-item_active-NcJX6').text)
+        next_page_button = driver.find_elements(By.CLASS_NAME, 'pagination-item_arrow-Sttbt')[1]
+        file = open('test.txt', 'w')
+        print(f'По результатам поиска найдено страниц: {pages_count}\nПарсинг начинается')
+        count = 1
+        # while n <= pages_count:
         items = driver.find_elements(By.CLASS_NAME, 'iva-item-titleStep-_CxvN')
-        q = 1
+
         for item in items:
 
             item.click()
@@ -40,23 +63,24 @@ try:
             title = driver.find_element(By.CLASS_NAME, 'title-info-title-text').text
             price = driver.find_element(By.CLASS_NAME, 'js-item-price').get_attribute('content')
             link = driver.current_url
-            file.write(f'{q}) {"*" * 30}\n')
+            file.write(f'{count}) {"*" * 30}\n')
             file.write(f"Продавец: {username}\nЗаголовок:{title}\nЦена:{price}\nСсылка:{link}\n")
 
-            print(f"{q}) Продавец: {username}\nЗаголовок: {title}\nЦена: {price}\nСсылка: {link}\n", end='\n\n')
+            print(f"{count}) Продавец: {username}\nЗаголовок: {title}\nЦена: {price}\nСсылка: {link}\n", end='\n\n')
             driver.close()
             driver.switch_to.window(driver.window_handles[0])
-            q+=1
-        # q=1
-        n += 1
-        url = f'https://www.avito.ru/krasnodar/noutbuki?p={n}&q=xiaomi+mi+notebook+pro'
-        driver.get(url=url)
-        print(f"{'*'*30}\nПереход на страницу {n}\n{'*'*30}\n")
-    file.close()
-except Exception as ex:
-    print(ex)
-finally:
-    driver.close()
-    driver.quit()
+            count+=1
+            # q=1
+            # n += 1
+            # url = f'https://www.avito.ru/krasnodar/noutbuki?p={n}&q=xiaomi+mi+notebook+pro'
+            # driver.get(url=url)
+            # print(f"{'*'*30}\nПереход на страницу {n}\n{'*'*30}\n")
+        file.close()
+    except Exception as ex:
+        print(ex)
+    finally:
+        driver.close()
+        driver.quit()
 
-
+url=get_search_results()
+parse_results(url)
