@@ -1,0 +1,46 @@
+1637273427777	geckodriver	INFO	Listening on 127.0.0.1:41137
+1637273428795	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-headless" "--disable-blink-features=AutomationControlled" "-no-remote" "-profile" "/tmp/rust_mozprofilevcunR1"
+*** You are running in headless mode.
+1637273429430	Marionette	INFO	Marionette enabled
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofilevcunR1/search.json.mozlz4", (void 0)))
+1637273430482	Marionette	INFO	Listening on port 41893
+1637273430513	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1637273434948	Marionette	INFO	Stopped listening on port 41893
+[Parent 50452, IPC I/O Parent] WARNING: FileDescriptorSet destroyed with unconsumed descriptors: file /build/firefox-9p102y/firefox-94.0+build3/ipc/chromium/src/chrome/common/file_descriptor_set_posix.cc:19
+JavaScript error: resource://gre/modules/AsyncShutdown.jsm, line 718: Error: Phase "Sqlite.jsm: wait until all connections are closed" is finished, it is too late to register completion condition "protections.sqlite#0: waiting for shutdown"
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1637273448044	geckodriver	INFO	Listening on 127.0.0.1:50685
+1637273448051	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--disable-blink-features=AutomationControlled" "-no-remote" "-profile" "/tmp/rust_mozprofileGNe1RW"
+
+(firefox:50843): Gtk-WARNING **: 01:10:48.794: Theme directory 16x16/panel of theme Mkos-Big-Sur-Night has no size field
+
+
+(firefox:50843): Gtk-WARNING **: 01:10:48.798: Theme directory 16x16@2x/places of theme Mkos-Big-Sur-Night has no size field
+
+
+(firefox:50843): Gtk-WARNING **: 01:10:48.799: Theme directory 24x24/apps of theme Mkos-Big-Sur-Night has no size field
+
+
+(firefox:50843): Gtk-WARNING **: 01:10:48.802: Theme directory 24x24@2x/panel of theme Mkos-Big-Sur-Night has no size field
+
+
+(firefox:50843): Gtk-WARNING **: 01:10:48.802: Theme directory 24x24@2x/panel of theme Mkos-Big-Sur-Night has no size field
+
+ATTENTION: default value of option mesa_glthread overridden by environment.
+ATTENTION: default value of option mesa_glthread overridden by environment.
+ATTENTION: default value of option mesa_glthread overridden by environment.
+ATTENTION: default value of option mesa_glthread overridden by environment.
+1637273450168	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileGNe1RW/search.json.mozlz4", (void 0)))
+1637273451526	Marionette	INFO	Listening on port 45157
+1637273451584	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1637273456130	Marionette	INFO	Stopped listening on port 45157
+
+###!!! [Child][MessageChannel] Error: (msgtype=0x5B000C,name=PHttpChannel::Msg___delete__) Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+

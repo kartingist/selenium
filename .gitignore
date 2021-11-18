@@ -1,3 +1,6 @@
 .venv
 vk.py
 ipr_sogaz/geckodriver.log
+.idea
+__pycache__/
+
