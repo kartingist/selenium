@@ -1,5 +1,5 @@
 from selenium import webdriver
-from settings import *
+from ipr_sogaz.settings import *
 from vk import *
 import time
 from selenium.webdriver.common.by import By
