@@ -10,10 +10,10 @@ useragents={'ie':'Mozilla/5.0 (Windows NT 6.3; Trident/7.0; rv:11.0) like Gecko'
 chromeoptions = webdriver.ChromeOptions()
 chromeoptions.add_argument(f"user-agent={useragents.get('chrome')}")
 chromeoptions.add_argument('--disable-blink-features=AutomationControlled')
-chromeoptions.headless=True
+# chromeoptions.headless=True
 
 ffoptions = webdriver.FirefoxOptions()
-ffoptions.headless=True
+# ffoptions.headless=True
 ffoptions.add_argument('--disable-blink-features=AutomationControlled')
 
 def driver(browser):
